@@ -15,29 +15,35 @@
 </template>
   
 <script>
-import { fetchDailyAllList } from '../api/index.js';
+// import { fetchDailyAllList } from '../api/index.js';
 import SwiperView from '../components/Swiper.vue';
 
 export default {
   name: 'dailyList',
+  components : {
+    SwiperView
+  },
   data: function () {
     return {
       dailyList: []
     }
   },
   created: function () {
-    fetchDailyAllList()
-    .then((response)=> {
-        console.log('### response: ' + JSON.stringify(response));
-        this.dailyList = response.data.results;
-    })
-    .catch((error) =>{
-        console.log(error);
-    })
+    // fetchDailyAllList()
+    // .then((response)=> {
+    //     // console.log('### response: ' + JSON.stringify(response));
+    //     this.dailyList = response.data.results;
+    // })
+    // .catch((error) =>{
+    //     console.log(error);
+    // })
+    console.log("store  " , this.$store);
+    console.log(this.dailyList);
+
+    this.dailyList = this.$store.state.dailys;
+    
   },
-  components : {
-    SwiperView
-  }
+  
 
 }
 </script>

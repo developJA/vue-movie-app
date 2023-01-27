@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue';
 import SearchView from '../views/SearchView.vue';
 import CategoryView from '../views/CategoryView.vue';
 import DetailView from '../views/DetailView.vue';
+import DailyView from '../views/DailyView.vue';
 
 Vue.use(VueRouter);
 
@@ -29,6 +30,11 @@ export const router = new VueRouter({ // 라우터의 정보들을 관리하는 
             path: '/detail/:id',	
             component : DetailView,
             name : 'DetailView'
+        },
+        {
+            path: '/daily',	
+            component : DailyView,
+            name : 'DailyView'
         },
     	
     ]

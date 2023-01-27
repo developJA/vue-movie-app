@@ -25,7 +25,7 @@ export default {
   created: function () {
     fetchWeeklyList()
     .then((response)=> {
-        console.log('### response: ' + JSON.stringify(response));
+        // console.log('### response: ' + JSON.stringify(response));
         this.weeklyList = response.data.results;
     })
     .catch((error) =>{
