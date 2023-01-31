@@ -1,4 +1,4 @@
-import { fetchDailyAllList } from '../api/index.js';
+import { fetchDailyAllList, fetchWeeklyList, fetchSearchInfo } from '../api/index.js';
 
 export default {
     FETCH_DAILY({ commit }) {
@@ -11,5 +11,25 @@ export default {
             console.log(error);
         })
     },
-    
+    FETCH_WEEKLY({ commit }) {
+        fetchWeeklyList() 
+        .then(({ data, status }) => {
+            console.log(status);
+            commit('SET_WEEKLY', data);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+    },
+    FETCH_SEARCH({ commit }, str) {
+        fetchSearchInfo(str)
+        .then(({ data, status }) => {
+            console.log(status);
+            console.log(data);
+            commit('SET_SEARCH', data);
+        })
+        .catch(function(error){
+            console.log(error);
+        })
+    },
 }

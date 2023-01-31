@@ -20,13 +20,23 @@ export default {
 </script>
 
 <style>
-html,body{padding:0; margin:0;}
+html,body{
+  padding:0; 
+  margin:0;
+  background-color: #000;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffff;
   margin:0; padding:0;
+}
+router-view {
+  min-height: 600px
+}
+a {
+  color : #ffff !important;
 }
 </style>

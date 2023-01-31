@@ -21,8 +21,8 @@ function fetchWeeklyList() {
 function fetchDetailInfo(id) {
     return axios.get(`${config.baseUrl}movie/${id}?api_key=${config.key}&language=${config.lang}`);
 }
-function fetchSearchInfo() {
-    return axios.get(`${config.baseUrl}search/movie?api_key=${config.key}&query=whiplash&language=de-DE&region=DE`)
+function fetchSearchInfo(str) {
+    return axios.get(`${config.baseUrl}search/movie?api_key=${config.key}&query=${str}&language=ko-KR`)
 }
 
 export {

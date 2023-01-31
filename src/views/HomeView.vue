@@ -1,18 +1,21 @@
 <template>
     <div>
-        <daily-view></daily-view>
-        <weekly-view></weekly-view>
+        <daily-list></daily-list>
+        <weekly-list></weekly-list>
+        <romance-list></romance-list>
     </div>
 </template>
   
 <script>
-import DailyView from './DailyView.vue'
-import WeeklyView from './WeeklyView.vue'
+import RomanceList from '../components/home/RomanceList.vue'
+import DailyList from '../components/home/DailyList.vue'
+import WeeklyList from '../components/home/WeeklyList.vue'
 
 export default {
   components: {
-    DailyView,
-    WeeklyView,
+    DailyList,
+    WeeklyList,
+    RomanceList,
   }
 }
 </script>
