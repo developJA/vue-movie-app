@@ -5,7 +5,6 @@
         <swiper-slide v-for="listItem in getList" class="post" v-bind:key="listItem.item">
             <router-link v-bind:to="`detail/${listItem.id}`">
                 <img :src="`https://image.tmdb.org/t/p/w500/${listItem.poster_path}`">
-            
             </router-link>
         </swiper-slide>
 

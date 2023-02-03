@@ -1,4 +1,4 @@
-import { fetchDailyAllList, fetchWeeklyList, fetchSearchInfo } from '../api/index.js';
+import { fetchDailyAllList, fetchWeeklyList, fetchSearchMovieInfo } from '../api/index.js';
 
 export default {
     FETCH_DAILY({ commit }) {
@@ -22,7 +22,7 @@ export default {
         })
     },
     FETCH_SEARCH({ commit }, str) {
-        fetchSearchInfo(str)
+        fetchSearchMovieInfo(str)
         .then(({ data, status }) => {
             console.log(status);
             console.log(data);

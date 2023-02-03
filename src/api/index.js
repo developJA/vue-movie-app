@@ -21,13 +21,17 @@ function fetchWeeklyList() {
 function fetchDetailInfo(id) {
     return axios.get(`${config.baseUrl}movie/${id}?api_key=${config.key}&language=${config.lang}`);
 }
-function fetchSearchInfo(str) {
+function fetchSearchMovieInfo(str) {
     return axios.get(`${config.baseUrl}search/movie?api_key=${config.key}&query=${str}&language=ko-KR`)
+}
+function fetchSearchTvInfo(str) {
+    return axios.get(`${config.baseUrl}search/tv?api_key=${config.key}&query=${str}&language=ko-KR`)
 }
 
 export {
     fetchDailyAllList,
     fetchWeeklyList,
     fetchDetailInfo,
-    fetchSearchInfo,
+    fetchSearchMovieInfo,
+    fetchSearchTvInfo,
 }

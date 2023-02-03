@@ -24,12 +24,12 @@ html,body{
   padding:0; 
   margin:0;
   background-color: #000;
+  font-family: 'Noto Sans KR','맑은고딕', 'Malgun Gothic', '돋움', Dotum, 'Apple Gothic', sans-serif;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #ffff;
   margin:0; padding:0;
 }
@@ -39,4 +39,5 @@ router-view {
 a {
   color : #ffff !important;
 }
+
 </style>
