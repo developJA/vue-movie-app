@@ -1,34 +1,43 @@
 <template>
     <div class="category-section">
-        <div class="category-box">
-            <p class="box-title">방송</p>
-            <div id="divTvCont" class="thumb maxH16">
-                <div class="thumb-item" v-for="listItem in tvList" :key="listItem.item">
-                    <span>{{listItem.name}}</span>
+        <div v-show="detailShowFlag==false">
+            <div class="category-box">
+                <p class="box-title">방송</p>
+                <div id="divTvCont" class="thumb maxH16">
+                    <div class="thumb-item" v-for="listItem in tvList" :key="listItem.item" v-on:click="moveCateDetail(listItem)">
+                        <span>{{listItem.name}}</span>
+                    </div>
                 </div>
+                <button id="btnTvMore" class="btn-more" v-on:click="showMore($event)">더보기</button>
             </div>
-            <button id="btnTvMore" class="btn-more" v-on:click="showMore($event)">더보기</button>
-        </div>
-        <div class="category-box">
-            <p class="box-title">영화</p>
-            <div id="divMvCont" class="thumb maxH16">
-                <div class="thumb-item" v-for="listItem in movieList" :key="listItem.item">
-                    <span>{{listItem.name}}</span>
+            <div class="category-box">
+                <p class="box-title">영화</p>
+                <div id="divMvCont" class="thumb maxH16">
+                    <div class="thumb-item" v-for="listItem in movieList" :key="listItem.item" v-on:click="moveCateDetail(listItem)">
+                        <span>{{listItem.name}}</span>
+                    </div>
                 </div>
+                <button id="btnMvMore" class="btn-more" v-on:click="showMore($event)">더보기</button>
             </div>
-            <button id="btnMvMore" class="btn-more" v-on:click="showMore($event)">더보기</button>
         </div>
+        <category-detail-list v-show="detailShowFlag==true" :genreTitle="genreTitle"></category-detail-list>
     </div>
 </template>
   
 <script>
     import { fetchGenreList } from '../api/index.js';
+    import CategoryDetailList from '../components/category/CategoryDetailList.vue'
 
     export default {
+        components : {
+            CategoryDetailList
+        },  
         data() {
             return {
                 tvList : [],
                 movieList : [],
+                detailShowFlag : false,
+                genreTitle : "",
             }
         },
         created() {
@@ -74,6 +83,11 @@
                         document.getElementById("divTvCont").classList.add("maxH16");
                     }
                 }
+            },
+            moveCateDetail(obj){
+                console.log("moveCateDetail!!",obj);
+                this.genreTitle = obj.name;
+                this.detailShowFlag = true;
             }
         }
     }
