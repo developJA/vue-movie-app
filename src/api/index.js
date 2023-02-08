@@ -47,6 +47,9 @@ function fetchMovieVideo(str) {
 function fetchGenreList(type) {
     return axios.get(`${config.baseUrl}genre/${type}/list?api_key=${config.key}&language=ko-KR`)
 }
+function fetchSimilarMovieList(str) {
+    return axios.get(`${config.baseUrl}movie/${str}/similar?api_key=${config.key}&language=ko-KR`)
+}
 
 export {
     corsAnywhere,
@@ -60,5 +63,6 @@ export {
     fetchWeekTrendingList,
     fetchPopularList,
     fetchMovieVideo,
-    fetchGenreList
+    fetchGenreList,
+    fetchSimilarMovieList,
 }

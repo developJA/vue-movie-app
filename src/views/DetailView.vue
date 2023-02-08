@@ -17,11 +17,25 @@
         </div>
         <p class="top-sub-ttl bold">한국어 자막 순차 지원</p>
         <p class="overview">{{detailInfo.overview}}</p>
-        <ul>
+        <!-- <p style="font-size: small;">영화사 : {{ companies }}</p> -->
+        <!-- <ul>
             <li v-for="company in detailInfo.production_companies" class="no" v-bind:key="company.item">
                 <p>영화사 : {{company.name}}</p>
             </li>
-        </ul>
+        </ul> -->
+
+        <div class="list-content">
+          <div class="top-tab">
+            <button>관련영상</button>
+          </div>
+          <ul>
+            <li v-for="listItem in recommends" class="no" v-bind:key="listItem.item">
+                <img :src="`https://image.tmdb.org/t/p/w500/${listItem.poster_path}`">
+                <span>영화명 : {{listItem.title}}</span>
+            </li>
+          </ul>
+          
+        </div>
         
         
     </div>
@@ -29,7 +43,7 @@
     
 <script>
 import TabHeader from '../components/TabHeader.vue'
-import { fetchDetailInfo, fetchMovieVideo } from '../api/index.js';
+import { fetchDetailInfo, fetchMovieVideo, fetchSimilarMovieList } from '../api/index.js';
 
 export default {
   name: 'detailInfo',
@@ -42,6 +56,8 @@ export default {
       videoUrl: '',
       imgUrl: '',
       adultImg: '',
+      companies: "",
+      recommends : [],
     }
   },
   created: function () {
@@ -51,12 +67,17 @@ export default {
         console.log('### response: ' + JSON.stringify(response));
         this.detailInfo = response.data;
         this.getYoutubeVideo(response.data.id);
+        this.getRecommendVideo(response.data.id);
         this.imgUrl = "https://image.tmdb.org/t/p/w500/" + response.data.poster_path;
         this.adultImg = response.data.adult == true ? 'number-19.png' : 'number-15.png';
+        let _companyArr = response.data.production_companies.map(x => x.name);
+        console.log("_companyArr   : ",_companyArr);
+        this.companies = _companyArr.join(", ");
     })
     .catch((error) =>{
         console.log(error);
     })
+
   },
   methods :{
     getYoutubeVideo(id) {
@@ -71,8 +92,22 @@ export default {
       .catch((error) =>{
           console.log(error);
       })
+    },
+    getRecommendVideo(id) {
+      fetchSimilarMovieList(id)
+      .then((response)=> {
+          console.log('getRecommendVideo response: ' + JSON.stringify(response));
+          if(response.data.results.length > 0){
+            this.recommends = response.data.results;
+          }
+          
+      })
+      .catch((error) =>{
+          console.log(error);
+      })
     }
-  }
+  },
+  
 
 }
 </script>
@@ -109,5 +144,30 @@ export default {
   }
   ul {
     list-style: none;
+  }
+  .list-content .top-tab{
+    text-align: center;
+  }
+  .list-content .top-tab > button{
+    width: 90%;
+    height: 40px;
+    border: none;
+    background:transparent;
+    color: #fff;
+    border-bottom: 0.2rem solid #006ecd;
+    font-weight: 700;
+    text-align: center;
+  }
+  .list-content ul{
+    list-style: none;
+    /* margin-left: 0; */
+    padding-left: 15px;
+  }
+  .list-content ul img{
+    width: 100px;
+    height: 100px;
+  }
+  .list-content li span{
+    font-size:small;
   }
 </style>
