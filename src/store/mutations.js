@@ -10,6 +10,9 @@ export default {
         console.log("SET_SEARCH search : ",search);
         state.search = search.results;
     },
+    SET_POPULAR(state, populars) {
+        state.populars = populars;
+    },
     UPDATE_SEARCH(state, search) {
         state.search = search;
     }

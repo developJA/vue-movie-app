@@ -5,16 +5,6 @@
           
         <router-link v-bind:to="`detail/${listItem.id}`"><p>{{ listItem.title || listItem.name }}</p></router-link>
     </swiper-slide>
-    <!-- <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide>
-    <swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 4</swiper-slide>
-    <swiper-slide>Slide 5</swiper-slide>
-    <swiper-slide>Slide 6</swiper-slide>
-    <swiper-slide>Slide 7</swiper-slide>
-    <swiper-slide>Slide 8</swiper-slide>
-    <swiper-slide>Slide 9</swiper-slide>
-    <swiper-slide>Slide 10</swiper-slide> -->
     <div class="swiper-pagination" slot="pagination"></div>
     <div class="swiper-button-prev" slot="button-prev"></div>
     <div class="swiper-button-next" slot="button-next"></div>
@@ -67,8 +57,14 @@
     }
 </script>
 
-<style scoped>
+<style>
     .swiper{
         min-height : 350px;
+    }
+    .swiper-pagination .swiper-pagination-bullet {
+        background-color: #eee !important;
+    }
+    .swiper-pagination.swiper-pagination-bullets {
+        bottom: 0px !important;
     }
 </style>

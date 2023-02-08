@@ -13,6 +13,11 @@ export const store = new Vuex.Store({
         dailys: [],
         weeklys : [],
         searchs : [],
+        populars : [],
+
+        global : {
+            headerLogoFlag : false,        // 헤더 로고 노출 플래그
+        }
     },
     mutations,
     actions,

@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h2>비현실적이라 더 설레는 로맨스</h2>
+      <h3>다이나믹한 액션   </h3>
       <swiper class="swiper line" :options="swiperOption">
         <swiper-slide v-for="listItem in getList" class="post" v-bind:key="listItem.item">
           <router-link v-bind:to="`detail/${listItem.id}`">
@@ -29,7 +29,7 @@
             return {
                 swiperOption: {
                     slidesPerView: 4, 
-                    spaceBetween: 30, 
+                    spaceBetween: 5, 
                     loop: true, 
                     navigation: { 
                         nextEl: '.swiper-button-next', 
@@ -40,12 +40,16 @@
             }
         },
         created() {
-            this.$store.dispatch("FETCH_WEEKLY");
+            this.$store.dispatch("FETCH_POPULAR");
         },
         computed : {
             getList(){
                 let result;
-                result = this.$store.state.weeklys.results;
+                let poplrList = [];
+                poplrList = this.$store.state.populars.results || [];
+                result = poplrList.filter(item => {
+                    return item.genre_ids.includes(28)   // 액션
+                });
                 return result;
             }
             

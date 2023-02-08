@@ -1,6 +1,6 @@
 <template>
     <div>
-        drama!
+        My!
     </div>
 </template>
   
@@ -8,7 +8,7 @@
 
 </script>
   
-<style scoped>
-    
+<style>
+
 </style>
   

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Daily</h2>
     <swiper class="swiper h500" :options="swiperOption">
         <swiper-slide v-for="listItem in getList" class="post" v-bind:key="listItem.item">
             <router-link v-bind:to="`detail/${listItem.id}`">
@@ -57,7 +56,7 @@
 </script>
 
 <style scoped>
-    h2{
+    h3{
         padding-left: 10px;
         text-align: left;
     }

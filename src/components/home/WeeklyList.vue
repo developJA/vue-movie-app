@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>주간 인기 콘텐츠</h2>
+    <h3>주간 인기 콘텐츠</h3>
     <swiper class="swiper line" :options="swiperOption">
       <swiper-slide v-for="listItem in getList" class="post" v-bind:key="listItem.item">
         <router-link v-bind:to="`detail/${listItem.id}`">
@@ -54,21 +54,20 @@
 </script>
 
 <style>
-    h2{
+    /* h3{
         padding-left: 10px;
         text-align: left;
     }
     .swiper.line{
-        /* min-height : 250px; */
         padding-left: 0 20 10 20;
-        /* padding-right: 20px; */
     }
     .swiper .normal-img{
         width: 150px;
         height: 180px;
     }
     .swiper .post{
-        min-width: 210px;
-    }
+        min-width: 150px;
+    } 
+    */
 </style>
   
